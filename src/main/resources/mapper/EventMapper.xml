@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhh.mapper.EventMapper">
+    <!--制定比赛项目-->
+    <insert id="insertEvent">
+        <selectKey keyProperty="eve_eid" resultType="int" order="BEFORE">
+            SELECT SEQ_EVENT_EID.nextval from dual
+        </selectKey>
+        INSERT INTO EVENT VALUES (#{eve_eid},#{eve_name},#{eve_lx},#{eve_cd},#{eve_time1},#{eve_time2})
+    </insert>
+
+    <!--查找所有比赛项目-->
+    <select id="selectAllEvent" resultType="Event">
+        SELECT * FROM EVENT
+    </select>
+</mapper>

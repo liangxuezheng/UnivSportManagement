@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhh.mapper.XtMapper">
+    <!--管理员登录-->
+    <select id="selectXt" resultType="Xt">
+        SELECT * FROM XT WHERE XT_XH=#{xt_xh} AND XT_PASS=#{xt_pass}
+    </select>
+</mapper>

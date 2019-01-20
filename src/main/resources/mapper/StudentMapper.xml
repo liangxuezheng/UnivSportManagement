@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhh.mapper.StudentMapper">
+
+    <!--运动员注册-->
+    <insert id="insertStudent" keyProperty="stu_xh" useGeneratedKeys="true">
+        <selectKey keyProperty="stu_sid" resultType="int" order="BEFORE">
+            SELECT SEQ_STUDENT_STUSID.nextval from dual
+        </selectKey>
+        INSERT INTO STUDENT("STU_SID","STU_NAME","STU_XB","STU_XH","BJ_NAME","STU_SEX","STU_PASS") VALUES (#{stu_sid},#{stu_name},#{stu_xb},#{stu_xh},#{bj_name},#{stu_sex},#{stu_pass})
+    </insert>
+
+    <!--运动员登录-->
+    <select id="selectStudentByXh" resultType="Student">
+
+        SELECT * FROM STUDENT WHERE STU_XH=#{stu_xh} AND STU_PASS=#{stu_pass}
+    </select>
+</mapper>
